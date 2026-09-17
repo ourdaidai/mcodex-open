@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcodex"
+version = "0.1.0"
+description = "tmux wrapper and local coordination server for Codex agent sessions"
+readme = "README.md"
+license = "0BSD"
+requires-python = ">=3.10"
+dependencies = [
+    "opentelemetry-api>=1.44.0",
+    "opentelemetry-exporter-prometheus>=0.65b0",
+    "opentelemetry-sdk>=1.44.0",
+    "prometheus-client>=0.26.0",
+]
+
+[project.scripts]
+mcodex = "mcodex.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcodex"]
+
+[tool.uv]
+package = true
+
+[dependency-groups]
+dev = []
